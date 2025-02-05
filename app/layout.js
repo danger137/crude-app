@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {Providers} from "./providers"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       >
         <Providers>
         {children}
+        <ReactQueryDevtools></ReactQueryDevtools>
         </Providers>
       </body>
     </html>

@@ -21,7 +21,7 @@ export default function TodoPage() {
   };
 
   // Fetch Todos
-  const { data: todos } = useQuery({
+  const { data: todos,status,isLoading } = useQuery({
     queryKey: ['todos'],
     queryFn: getTodos,
     initialData: [],
@@ -65,6 +65,10 @@ export default function TodoPage() {
     },
   });
 
+  if(isLoading){
+    return <p>Loading ...</p>
+  }
+
   return (
     <div className="p-6 max-w-lg mx-auto">
       <h1 className="text-2xl font-bold mb-4">Todo List </h1>
@@ -83,6 +87,7 @@ export default function TodoPage() {
         </button>
       </div>
 
+  {/* <h1 className='mt-7 text-center' >Status  {status} </h1> */}
       {/* Todo List */}
       <ul className="mt-4">
         {todos.map((todo) => (
